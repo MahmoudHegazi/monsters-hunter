@@ -47,6 +47,17 @@
   display:flex;
 }
 
+.room_label {
+   text-align: center;
+  background: black;
+  border: 2px solid gold;
+  color: white;
+  height: 15%;
+  width: 15%;
+  padding: 1%;
+  padding-top: 2%;
+
+}
 
 .start_area {
   height: 50%;
@@ -137,7 +148,7 @@
           <div class="start_land">
             
             <!-- champ start square -->
-            <div class="start_square">
+            <div class="start_square" >
               <img id="user_champ" class="champ" src="https://thumbs.gfycat.com/NarrowMinorEmu-size_restricted.gif" width="150" ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" >
             </div>
             <!--Land Image -->
@@ -149,6 +160,9 @@
       
          <!-- room -->
          <div class="room" id="room0" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room1_champ">
+            
+            <!-- room level label -->
+            <div class="room_label" id="room1_champl" data-room="room1_champ">1</div>
            <!-- room champ -->
            <div style="width:50%;" id="room1_champ" class="room1_champ" data-room="room1_champ"></div>
             <!-- room champ -->
@@ -161,6 +175,10 @@
          
          <!-- room -->
          <div class="room" id="room1" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room2_champ">
+         
+            <!-- room level label -->
+            <div class="room_label" id="room2_champl" data-room="room2_champ">1</div>
+            
               <!-- room champ -->
               <div style="width:50%;" id="room2_champ" class="room2_champ" data-room="room2_champ"></div>
               <!-- room champ -->
@@ -168,6 +186,10 @@
          
          <!-- room -->
          <div class="room" id="room2" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room3_champ">
+         
+             <!-- room level label -->
+            <div class="room_label" id="room3_champl" data-room="room3_champ">1</div>
+            
               <!-- room champ -->
               <div style="width:50%;" id="room3_champ" class="room3_champ" data-room="room3_champ"></div>
               <!-- room champ -->         
@@ -180,6 +202,11 @@
       
          <!-- room -->
          <div class="room" id="room3" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room4_champ">
+         
+              <!-- room level label -->
+            <div class="room_label" id="room4_champl" data-room="room4_champ">1</div>
+            
+            
               <!-- room champ -->
               <div style="width:50%;" id="room4_champ" class="room4_champ" data-room="room4_champ"></div>
               <!-- room champ -->
@@ -187,6 +214,10 @@
          
          <!-- room -->
          <div class="room" id="room4" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room5_champ">
+         
+            <!-- room level label -->
+            <div class="room_label" id="room5_champl" data-room="room5_champ">1</div>
+            
                <!-- room champ -->
               <div style="width:50%;" id="room5_champ" class="room5_champ" data-room="room5_champ"></div>
               <!-- room champ -->        
@@ -194,6 +225,10 @@
          
          <!-- room -->
          <div class="room" id="room5" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room6_champ">
+         
+                <!-- room level label -->
+               <div class="room_label" id="room6_champl" data-room="room6_champ">1</div>
+            
               <!-- room champ -->
               <div style="width:50%;" id="room6_champ" class="room6_champ" data-room="room6_champ"></div>
               <!-- room champ -->         
@@ -205,6 +240,9 @@
       
          <!-- room -->
          <div class="room" id="room6" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room7_champ">
+         
+                <!-- room level label -->
+               <div class="room_label"  id="room7_champl" data-room="room7_champ">1</div>
                <!-- room champ -->
               <div style="width:50%;" id="room7_champ" class="room7_champ" data-room="room7_champ"></div>
               <!-- room champ -->        
@@ -212,6 +250,9 @@
          
          <!-- room -->
          <div class="room" id="room7" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room8_champ">
+         
+                <!-- room level label -->
+               <div class="room_label" id="room8_champl" data-room="room8_champ">1</div>         
               <!-- room champ -->
               <div style="width:50%;" id="room8_champ" class="room8_champ" data-room="room8_champ"></div>
               <!-- room champ -->         
@@ -219,6 +260,9 @@
          
          <!-- room -->
          <div class="room" id="room8" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room9_champ">
+         
+                <!-- room level label -->
+               <div class="room_label" id="room9_champl" data-room="room9_champ">1</div>         
               <!-- room champ -->
               <div style="width:50%;" id="room9_champ" class="room9_champ" data-room="room9_champ"></div>
               <!-- room champ -->         
@@ -227,6 +271,9 @@
       <div class="building">
          <!-- room -->
          <div class="room" id="room9" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room10_champ">
+                <!-- room level label -->
+               <div class="room_label" id="room10_champl" data-room="room10_champ">1</div>         
+         
                <!-- room champ -->
               <div style="width:50%;" id="room10_champ" class="room10_champ" data-room="room10_champ"></div>
               <!-- room champ -->        
@@ -234,6 +281,10 @@
          </div>
          <!-- room -->
          <div class="room" id="room10" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room11_champ">
+         
+         
+                 <!-- room level label -->
+               <div class="room_label" id="room11_champl" data-room="room11_champ">1</div>        
                 <!-- room champ -->
               <div style="width:50%;" id="room11_champ" class="room11_champ" data-room="room11_champ"></div>
               <!-- room champ -->       
@@ -241,6 +292,9 @@
          </div>
          <!-- room -->
          <div class="room" id="room11" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room12_champ">
+         
+                <!-- room level label -->
+               <div class="room_label"  id="room12_champl" data-room="room12_champ">1</div>         
          
                <!-- room champ -->
               <div style="width:50%;" id="room12_champ" class="room12_champ" data-room="room12_champ"></div>
@@ -259,30 +313,115 @@
 
 <script>
 const rooms = document.querySelectorAll('.room');
+const labels = document.querySelectorAll('.room_label');
 
-var monster_image = "https://cdna.artstation.com/p/assets/images/images/022/733/996/original/ivan-maranan-dino-roar1.gif?1576511965";
+const monster_images = [ "https://i.pinimg.com/originals/51/10/ab/5110ab924ec1d83549b2b99a49ac5e66.gif",
+"https://thumbs.gfycat.com/OffensiveAnimatedLeafhopper-size_restricted.gif", "https://cdna.artstation.com/p/assets/images/images/022/733/996/original/ivan-maranan-dino-roar1.gif?1576511965","https://i.pinimg.com/originals/2b/b7/ed/2bb7edcbd6c291285718bfee6683978f.gif","https://classroomclipart.com/images/gallery/Animations/big-eyed-purple-monster-animated-clipart-crcasm3.gif", "https://i.pinimg.com/originals/79/4a/d8/794ad85ec52e710511ac1581a401476a.gif","https://media1.giphy.com/media/jRr2Y37pHcYlRU8EZg/giphy.gif","https://lh3.googleusercontent.com/proxy/NARVwGsceMOPOSXaa6wz6Twt01Ubgi-Za-iCkarnriZLnEd9C7LMZNKJ_rGdlDT6sSl9IlOguq-YZEQg5KA0d_oycH0Dfg","https://static.wikia.nocookie.net/monster-legends-competitive/images/f/f5/Keeper_animation.gif/revision/latest?cb=20210321175116&path-prefix=fr","https://64.media.tumblr.com/f489f2492bd2641f8b8540ef57fb3f2d/tumblr_nq7ymstGxa1tgzy56o1_r2_540.gifv","https://static.wikia.nocookie.net/oto/images/1/10/Monster_Spicy_Dragon_Move.gif/revision/latest/scale-to-width-down/340?cb=20170424010510", "https://i.gifer.com/XqyS.gif"]
+var monster_image = monster_images[11];
 
 
-  const single_monster = (room_number, parent, img, count) => {
+  const single_monster = (room_number, parent, img, count, width) => {
     for (let i=0; i < count; i++){
     let new_monster = document.createElement('img');
     new_monster.src = img;
-    new_monster.width = "50";
+    new_monster.style.width = width;
     new_monster.setAttribute('data-room', room_number);
+    
     parent.appendChild(new_monster);
     }
   }
   
   
 const createmonsters = ()=> {
-  rooms.forEach( (room, index)=> {
-    let monster_count = Math.floor(Math.random() * 2) + 1;
-    let room_number = room.getAttribute('data-room');
-    if (index % 2 == 0) {
-    single_monster(room_number, room, monster_image, monster_count);
-    } else {
-    single_monster(room_number, room, monster_image, monster_count);
+
+  var one_index = 0;
+  var two_index = 0;
+  var three_index = 0;
+  
+  
+  rooms.forEach( (room)=> {
+    let unique_index = [];
+    index = 1;
+    
+    
+    while(unique_index.include(index) == false){
+      let index = Math.floor(Math.random() * 12) + 1;
     }
+    if (unique_index.include(index) == false){
+      unique_index.push(index);
+    }
+    let monster_count = Math.floor(Math.random() * 3) + 1;
+    monster_image = monster_images[index];
+    
+    /* indexing levels */
+    if (monster_count == 1) {
+      
+       switch(index) {
+        case 0:
+          // code block
+          break;
+        case 1:
+
+          // code block
+          break;
+        case 2:
+          // code block
+          break;
+        case 3:
+          // code block
+          break;
+        case 4:
+          // code block
+          break;
+        case 5:
+          // code block
+          break;
+        case 6:
+          // code block
+          break;
+        case 7:
+          // code block
+          break;
+        case 8:
+          // code block
+          break;
+        case 9:
+          // code block
+          break;
+        case 10:
+          // code block
+          break;
+        case 11:
+          // code block
+          break;
+        default:
+          // code block
+          }
+    
+    
+    }
+    else if (monster_count == 2) {
+
+    }
+    else{
+   
+    }
+    
+    
+    labels[index].textContent = index+1;
+    let room_number = room.getAttribute('data-room');
+    
+    
+    /* create monster accodring to result */
+    if (monster_count == 1) {
+    single_monster(room_number, room, monster_image, monster_count, '50%');
+    } 
+    else if (monster_count == 2) {
+    single_monster(room_number, room, monster_image, monster_count, '25%');
+    } else {
+    single_monster(room_number, room, monster_image, monster_count, '20%');
+    }
+ 
     
   });
   
@@ -294,7 +433,7 @@ function dragStart(event) {
 }
 
 function dragging(event) {
-  document.getElementById("demo").innerHTML = "The p element is being dragged";
+ // "The p element is being dragged";
 }
 
 function allowDrop(event) {
@@ -308,7 +447,7 @@ function drop(event) {
   var room_to = document.getElementById(room_id);
   
   room_to.appendChild(document.getElementById(data));
-  document.getElementById("demo").innerHTML = "The p element was dropped";
+  // droped
 }
 
 </script>
