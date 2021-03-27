@@ -344,12 +344,7 @@ const createmonsters = ()=> {
     index = 1;
     
     
-    while(unique_index.include(index) == false){
-      let index = Math.floor(Math.random() * 12) + 1;
-    }
-    if (unique_index.include(index) == false){
-      unique_index.push(index);
-    }
+
     let monster_count = Math.floor(Math.random() * 3) + 1;
     monster_image = monster_images[index];
     
