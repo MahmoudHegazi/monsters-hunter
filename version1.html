@@ -344,6 +344,7 @@ level_text
 
 
 const champ = document.querySelector('#user_champ');
+let cham_def_image = champ.src;
 const text_level = document.querySelector('#level_text');
 const rooms = document.querySelectorAll('.room');
 const labels = document.querySelectorAll('.room_label');
@@ -366,7 +367,8 @@ const userobj = {
     userobj.lvl += 1;
     text_level.textContent = userobj.lvl;
     champ.setAttribute('data-level', userobj.lvl+1);
-    setTimeout(function(){ champ.src = old_image}, 800);
+
+   
   }
 }
 
@@ -551,7 +553,10 @@ function attack(event) {
      
      // then level up
      
-     setTimeout(function(){ userobj.lvlup(); }, 1200);
+     setTimeout(function(){ userobj.lvlup(); champ.src = old_src;}, 1200);
+     
+     
+     setTimeout(function(){ userobj.lvlup(); champ.src = cham_def_image;}, 1500);
      
      //event.target.remove();
   } else {
