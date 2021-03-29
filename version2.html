@@ -365,10 +365,11 @@ const user_health = [78, 150,220, 440, 545, 650, 800, 1000, 1082, 5500, 10000]
 const userobj = {
   exp: 0,
   damge_index: 0,
+  health_index: 0,
   damge: user_damge[0],
   health: user_health[0],
   lvl: 1,
-  lvlup: (order) => {
+  lvlup: (order, lvl) => {
     
       
     if (champ.getAttribute('data-exp') >= user_exp_needed[userobj.lvl] || order==true){
@@ -378,11 +379,22 @@ const userobj = {
     let old_image = champ.src;
     champ.src = "https://raw.githubusercontent.com/MahmoudHegazi/monsters-hunter/main/jumb.webp";
     setTimeout(function(){ champ.src = cham_def_image;}, 1300);
+    
+    if (lvl != 1){
+    userobj.lvl += (1 * lvl) -1;
+    userobj.damge_index += (1 * lvl) - 1;
+    userobj.health_index += (1 * lvl) -1;
+    } else {
     userobj.lvl += 1;
     userobj.damge_index += 1;
-    userobj.damge[userobj.damge_index];
+    userobj.health_index += 1;    
+    }
+    userobj.damge = user_damge[userobj.damge_index];
+    userobj.health = user_health[userobj.health_index];
     text_level.textContent = userobj.lvl;
     champ.setAttribute('data-level', userobj.lvl+1);
+    champ.setAttribute('data-damge', userobj.damge);
+    champ.setAttribute('data-health', userobj.health);
        }
    
   },
@@ -400,7 +412,7 @@ const userobj = {
     if (result > 0) {
        // if champ live
        monster.setAttribute('data-health', Number(monster.getAttribute('data-health')) - champ_attack )
-       return Number(monster.getAttribute('data-health'));
+       return monster.getAttribute('data-health');
     } else {
     
       // if champ dead
@@ -455,10 +467,12 @@ function checkroom() {
   const single_monster = (room_number, parent, img, count, width, index) => {
     for (let i=0; i < count; i++){
     let new_monster = document.createElement('img');
+    let current_room_num = room_number.split('_')[0].split('m')[1];
+    let current_index = index;
     new_monster.src = img;
     new_monster.style.width = width;
     new_monster.className = "monster";
-    new_monster.setAttribute('data-lvl', index);
+    new_monster.setAttribute('data-lvl', current_index);
     new_monster.setAttribute('data-health', monsters_health[index]);
     new_monster.setAttribute('data-damge', monsters_damge[index]);
     new_monster.setAttribute('data-exp', monsters_exp[index]);
@@ -481,7 +495,7 @@ const createmonsters = ()=> {
   rooms.forEach( (room, l)=> {
     
 
-     index = Math.floor(Math.random() * 11) + 1;
+    const index = Math.floor(Math.random() * 11) + 1;
 
     let monster_count = Math.floor(Math.random() * 3) + 1;
     monster_image = monster_images[index];
@@ -489,7 +503,7 @@ const createmonsters = ()=> {
     
 
     
-    /* indexing levels */
+    /* indexing levels  not finished
     if (monster_count == 1) {
            
 
@@ -498,11 +512,11 @@ const createmonsters = ()=> {
        
     }
     else{
-       
+       unused line can break the code
     }
+    */
     
-    
-    labels[index].textContent = index+1;
+
     let room_number = room.getAttribute('data-room');
     
     
@@ -567,7 +581,8 @@ function drop(event) {
   if (room_id == 'item13') {
      document.getElementById("item13").style.display = "none";
      let item_exp = document.getElementById("item13").getAttribute('data-exp');
-     champ.setAttribute('data-level', item_exp);
+     //alert(Number(item_exp));
+     userobj.lvlup(true,Number(item_exp));
      //champ.setAttribute('data-current-room', room_id);
      text_level.textContent = item_exp;
      document.getElementById("room13_champ").appendChild(document.getElementById(data));
@@ -615,7 +630,7 @@ function attack(event) {
      
      // then level up
      
-     setTimeout(function(){ userobj.lvlup(true);}, 1200);
+     setTimeout(function(){ userobj.lvlup(true,1);}, 1200);
      
      } else {
        alert("monster still live now health" + check_monster);
