@@ -365,14 +365,14 @@ const labels = document.querySelectorAll('.room_label');
 
 /* monster stats */
 const monsters_damge = [1,12, 24, 36, 48, 60,72, 84, 96, 108, 120, 550, 850]
-const monsters_health = [1,12, 80, 160, 248, 360, 372, 384, 396, 408, 450, 550, 850]
+const monsters_health = [1,12, 80, 260, 400, 500, 570, 650, 750, 850, 1000, 4000, 30000]
 
 /* exp */
-const monsters_exp =  [1, 10, 50, 70, 90, 200, 190, 200, 220, 250, 300, 320, 1500 ]
+const monsters_exp =  [1, 10, 20, 30, 50, 80, 100, 110, 130, 150, 200, 350, 1500 ]
 
 const user_levels_list = [1, 2, 3, 4, 5, 6 ,7, 8, 9, 10, 11, 12, 13]
 
-const user_exp_needed = [1, 30, 60, 100, 170,220,250, 270, 300, 330, 340, 350, 1000]
+const user_exp_needed = [1, 30, 60, 100, 170,220,250, 270, 350, 400, 600, 700, 1000]
 
 /* user stats*/
 const user_damge = [20, 60, 90, 120, 150, 220, 280, 360, 480, 580, 850, 1000]
@@ -387,12 +387,19 @@ const userobj = {
   health: user_health[0],
   lvl: 1,
   lvlup: (order, lvl) => {
+  
+  
+    /* if champ max level close*/
     
-      
+    let champexp =  champ.getAttribute('data-level');
+    if (champ.getAttribute('data-level') == 12){
+      return false;
+    }
+    
+    
     if (champ.getAttribute('data-exp') >= user_exp_needed[userobj.lvl] || order==true){
       alert('Check LVL up ');
          
-    let champexp =  champ.getAttribute('data-level');
 
     
     if (lvl != 1){
@@ -433,7 +440,7 @@ const userobj = {
     champ.src = "https://raw.githubusercontent.com/MahmoudHegazi/monsters-hunter/main/jumb.webp";
     setTimeout(function(){ champ.src = cham_def_image;}, 1300);
      // LVL UP
-    alert('level up');
+    //alert('level up');
     return true;
     } else {
     // LVL NOT up 
@@ -444,7 +451,7 @@ const userobj = {
    
   },
   attack_calc: (event)=> {
-    alert(event.target.getAttribute('data-health'));
+    //alert(event.target.getAttribute('data-health'));
   },
   live_or_die: (monster) => {
   
@@ -471,7 +478,7 @@ const userobj = {
          
          /* here must be function upgrade according to exp*/
          userobj.lvlup(true, 'auto');
-         alert('hi');
+         //alert('hi');
          return 'dead';
          
       }
