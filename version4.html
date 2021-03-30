@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<style>
+
+.dead_monster {
+  -ms-transform: rotate(70deg); /* IE 9 */
+  transform: rotate(70deg);
+}
+
+#game {
+  border: 2px solid black;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 650px;
+  background: url('https://art.pixilart.com/c132b4287fc63ce.gif');
+  background-size: cover;
+  
+}
+
+
+.fighting_area {
+  background: transparent;
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+/*  champ-area*/
+.building:nth-of-type(1){
+  width: 25%;
+}
+
+.building {
+  height: 90%;
+
+  width: 20%;
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+
+.room {
+  width: 100%;
+  background: url('https://thumbs.dreamstime.com/b/seamless-cinder-block-brick-wall-texture-game-textures-high-resolution-seamless-cinder-block-brick-wall-texture-games-d-195521163.jpg');
+  height: 30%;
+  border: 2px solid black;
+  display:flex;
+}
+
+.room_label {
+   text-align: center;
+  background: black;
+  border: 2px solid gold;
+  color: white;
+  height: 15%;
+  width: 15%;
+  padding: 1%;
+  padding-top: 2%;
+
+}
+
+.start_area {
+  height: 50%;
+  width: 10%;
+  border: 2px solid black;
+  background: black;
+}
+
+.champ_start {
+
+  border: 2px solid black;
+  margin-top: auto;
+  height: 60%;
+  width: 100%;
+  margin-left: 2%;
+  
+}
+
+.start_land_image {
+
+ width: 80%;
+ height: 150px;
+ margin-left: 10%;
+}
+
+/* square user start  */
+
+.start_square {
+ width: 80%;
+ margin-left: 10%;
+ height: 150px;
+ margin-bottom: -25px;
+ background: transparent;
+}
+
+.champ {
+  width: 100%;
+  height: 95%;
+}
+
+.single_monster:nth-of-type(1) {
+  margin-left: auto;
+}
+.single_monster {
+  width: 25%;
+  height: 100%;
+}
+/*
+.building {
+  width: 15%;
+  height: 50%;
+  margin-top: auto;
+  border: 2px solid gold;
+}
+.fighting_area {
+  margin-top: auto;
+  background: black;
+  width: 80%;
+  height: 500px;
+  margin-left: auto;
+  display: flex;
+}
+.room {
+  height: 30%;
+  width: 100%;
+  background: green;
+  
+}
+*/
+
+  /* die 
+  https://thumbs.gfycat.com/ElaborateMajesticBufeo-size_restricted.gif
+  */
+</style>
+</head>
+<body>
+
+<div id="game">
+
+
+    <div class="fighting_area">
+      <div class="building" data-room="room13_champ">
+      <span>Level:</span> <span id="level_text">1</span>
+       <div style="width:100%;background:gray;height:25%;margin-top:50%;" class="room13_champ" id="room13_champ" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room13_champ">
+       </div>
+        <div class="champ_start">
+          
+          <div class="start_land">
+            
+            <!-- champ start square -->
+            <div class="start_square" >
+              <img id="user_champ" class="champ" src="https://thumbs.gfycat.com/NarrowMinorEmu-size_restricted.gif" width="150" ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" 
+              data-level="1" data-current-room="room0_base" data-damge="20" data-health="78" data-exp="0">
+            </div>
+            <!--Land Image -->
+            <img class="start_land_image" src="https://webstockreview.net/images/earth-clipart-dirt-1.png" width="80" >           
+            </div>
+        </div>
+      </div>
+      <div class="building">
+      
+         <!-- room -->
+         <div class="room" id="room0" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room1_champ">
+            
+            <!-- room level label -->
+            <div class="room_label" id="room1_champl" data-room="room1_champ">1</div>
+           <!-- room champ -->
+           <div style="width:50%;" id="room1_champ" class="room1_champ" data-room="room1_champ"></div>
+           <img data-room="room1_champ" id="room1_champ_ef"
+           src="https://kylegrant76.files.wordpress.com/2016/01/explosion-1c200.gif" width="50" height="50" style="position: absolute;z-index: 30;left: 290px;top: 80px; display:none;">
+            <!-- room champ -->
+            
+            <!--
+           <img class="single_monster" src="https://cdna.artstation.com/p/assets/images/images/022/733/996/original/ivan-maranan-dino-roar1.gif?1576511965" width="50px" data-room="room1_champ">
+             -->
+
+         </div>
+         
+         <!-- room -->
+         <div class="room" id="room1" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room2_champ">
+            
+            <!-- room level label -->
+            <div class="room_label" id="room2_champl" data-room="room2_champ">1</div>
+            
+              <!-- room champ -->
+              <div style="width:50%;" id="room2_champ" class="room2_champ" data-room="room2_champ"></div>
+              
+              <img data-room="room2_champ"src="https://kylegrant76.files.wordpress.com/2016/01/explosion-1c200.gif" id="room2_champ_ef" width="50" height="50" style="position: absolute;z-index: 30;left: 33%;top: 280px; display:none;">
+              <!-- room champ -->
+         </div>
+         
+         <!-- room -->
+         <div class="room" id="room2" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room3_champ">
+         
+             <!-- room level label -->
+            <div class="room_label" id="room3_champl" data-room="room3_champ">1</div>
+            
+              <!-- room champ -->
+              <div style="width:50%;" id="room3_champ" class="room3_champ" data-room="room3_champ"></div>
+              <img id="room3_champ_ef" data-room="room3_champ"src="https://kylegrant76.files.wordpress.com/2016/01/explosion-1c200.gif" width="50" height="50" style="position: absolute;z-index: 30;left: 33%;top: 420px; display:none;">
+              <!-- room champ -->         
+         
+         </div>
+
+      </div>
+      <div class="building">
+      
+      
+         <!-- room -->
+         <div class="room" id="room3" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room4_champ">
+         
+              <!-- room level label -->
+            <div class="room_label" id="room4_champl" data-room="room4_champ">1</div>
+            
+            
+              <!-- room champ -->
+              <div style="width:50%;" id="room4_champ" class="room4_champ" data-room="room4_champ"></div>
+              <img data-room="room4_champ"src="https://kylegrant76.files.wordpress.com/2016/01/explosion-1c200.gif" id="room4_champ_ef" width="50" height="50" style="position: absolute;z-index: 30;left: 50%;top: 80px; display:none;">
+              <!-- room champ -->
+         </div>
+         
+         <!-- room -->
+         <div class="room" id="room4" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room5_champ">
+         
+            <!-- room level label -->
+            <div class="room_label" id="room5_champl" data-room="room5_champ">1</div>
+            
+               <!-- room champ -->
+              <div style="width:50%;" id="room5_champ" class="room5_champ" data-room="room5_champ"></div>
+              <img data-room="room5_champ"src="https://kylegrant76.files.wordpress.com/2016/01/explosion-1c200.gif" width="50" id="room5_champ_ef" height="50" style="position: absolute;z-index: 30;left: 50%;top: 280px; display:none;">
+              <!-- room champ -->        
+         </div>
+         
+         <!-- room -->
+         <div class="room" id="room5" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room6_champ">
+         
+                <!-- room level label -->
+               <div class="room_label" id="room6_champl" data-room="room6_champ">1</div>
+            
+              <!-- room champ -->
+              <div style="width:50%;" id="room6_champ" class="room6_champ" data-room="room6_champ"></div>
+              <img data-room="room6_champ"src="https://kylegrant76.files.wordpress.com/2016/01/explosion-1c200.gif" width="50" height="50" id="room6_champ_ef" style="position: absolute;z-index: 30;left: 50%;top: 420px; display:none;">
+              <!-- room champ -->         
+         </div>
+         
+         
+      </div>
+      <div class="building">
+      
+         <!-- room -->
+         <div class="room" id="room6" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room7_champ">
+         
+                <!-- room level label -->
+               <div class="room_label"  id="room7_champl" data-room="room7_champ">1</div>
+               <!-- room champ -->
+              <div style="width:50%;" id="room7_champ" class="room7_champ" data-room="room7_champ"></div>
+              <img data-room="room7_champ"src="https://kylegrant76.files.wordpress.com/2016/01/explosion-1c200.gif" width="50" height="50" id="room7_champ_ef" style="position: absolute;z-index: 30;left: 70%;top: 80px; display:none;">
+              <!-- room champ -->        
+         </div>
+         
+         <!-- room -->
+         <div class="room" id="room7" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room8_champ">
+         
+                <!-- room level label -->
+               <div class="room_label" id="room8_champl" data-room="room8_champ">1</div>         
+              <!-- room champ -->
+              <div style="width:50%;" id="room8_champ" class="room8_champ" data-room="room8_champ"></div>
+              <img data-room="room8_champ"src="https://kylegrant76.files.wordpress.com/2016/01/explosion-1c200.gif" width="50" height="50" id="room8_champ_ef" style="position: absolute;z-index: 30;left: 70%;top: 280px; display:none;">
+              <!-- room champ -->         
+         </div>
+         
+         <!-- room -->
+         <div class="room" id="room8" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room9_champ">
+         
+                <!-- room level label -->
+               <div class="room_label" id="room9_champl" data-room="room9_champ">1</div>         
+              <!-- room champ -->
+              <div style="width:50%;" id="room9_champ" class="room9_champ" data-room="room9_champ"></div>
+              <img data-room="room9_champ"src="https://kylegrant76.files.wordpress.com/2016/01/explosion-1c200.gif" width="50" height="50" id="room9_champ_ef" style="position: absolute;z-index: 30;left: 70%;top: 420px; display:none;">
+              <!-- room champ -->         
+         </div>
+      </div>
+      <div class="building">
+         <!-- room -->
+         <div class="room" id="room9" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room10_champ">
+                <!-- room level label -->
+               <div class="room_label" id="room10_champl" data-room="room10_champ">1</div>         
+         
+               <!-- room champ -->
+              <div style="width:50%;" id="room10_champ" class="room10_champ" data-room="room10_champ"></div>
+              <img data-room="room10_champ"src="https://kylegrant76.files.wordpress.com/2016/01/explosion-1c200.gif" width="50" height="50" id="room10_champ_ef" style="position: absolute;z-index: 30;left: 88%;top: 80px; display:none;">
+              <!-- room champ -->        
+         
+         </div>
+         <!-- room -->
+         <div class="room" id="room10" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room11_champ">
+         
+         
+                 <!-- room level label -->
+               <div class="room_label" id="room11_champl" data-room="room11_champ">1</div>        
+                <!-- room champ -->
+              <div style="width:50%;" id="room11_champ" class="room11_champ" data-room="room11_champ"></div>
+              <img data-room="room11_champ"src="https://kylegrant76.files.wordpress.com/2016/01/explosion-1c200.gif" width="50" height="50" id="room11_champ_ef" style="position: absolute;z-index: 30;left: 88%;top: 280px; display:none;">
+              <!-- room champ -->       
+         
+         </div>
+         <!-- room -->
+         <div class="room" id="room11" class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)" data-room="room12_champ">
+         
+                <!-- room level label -->
+               <div class="room_label"  id="room12_champl" data-room="room12_champ">1</div>         
+         
+               <!-- room champ -->
+              <div style="width:50%;" id="room12_champ" class="room12_champ" data-room="room12_champ"></div>
+              <img data-room="room12_champ" id="room12_champ_ef" src="https://kylegrant76.files.wordpress.com/2016/01/explosion-1c200.gif" width="50" height="50" style="position: absolute;z-index: 30;left: 88%;top: 420px; display:none;">
+              <!-- room champ -->        
+         </div>
+
+         
+      </div>
+
+
+
+    </div>
+    
+      
+
+
+<script>
+
+/* helper */
+function arrayMin(arr) {
+  var len = arr.length, min = Infinity;
+  while (len--) {
+    if (Number(arr[len]) < min) {
+      min = Number(arr[len]);
+    }
+  }
+  return min;
+};
+
+function arrayMax(arr) {
+  var len = arr.length, max = -Infinity;
+  while (len--) {
+    if (Number(arr[len]) > max) {
+      max = Number(arr[len]);
+    }
+  }
+  return max;
+};
+/* helper end */
+
+
+const champ = document.querySelector('#user_champ');
+let cham_def_image = champ.src;
+const text_level = document.querySelector('#level_text');
+const rooms = document.querySelectorAll('.room');
+const labels = document.querySelectorAll('.room_label');
+
+/* monster stats */
+const monsters_damge = [1,12, 24, 36, 48, 60,72, 84, 96, 108, 120, 550, 850]
+const monsters_health = [1,12, 80, 260, 400, 500, 570, 650, 750, 850, 1000, 4000, 30000]
+
+/* exp */
+const monsters_exp =  [1, 10, 20, 30, 50, 80, 100, 110, 130, 150, 200, 350, 1500 ]
+
+const user_levels_list = [1, 2, 3, 4, 5, 6 ,7, 8, 9, 10, 11, 12, 13]
+
+const user_exp_needed = [1, 30, 60, 100, 170,220,250, 270, 350, 400, 600, 700, 1000]
+
+/* user stats*/
+const user_damge = [20, 60, 90, 120, 150, 220, 280, 360, 480, 580, 850, 1000]
+const user_health = [78, 150,220, 440, 545, 650, 800, 1000, 1082, 5500, 10000]
+
+
+const userobj = {
+  exp: 0,
+  damge_index: 0,
+  health_index: 0,
+  damge: user_damge[0],
+  health: user_health[0],
+  lvl: 1,
+  lvlup: (order, lvl) => {
+  
+
+    /* if champ max level close*/
+    let champexp =  champ.getAttribute('data-level');
+    
+    if (champ.getAttribute('data-exp') == null){
+       champ.setAttribute('data-exp', 0);
+    }
+    if (champ.getAttribute('data-level') == 12){
+      return false;
+    }
+    
+    
+    if (champ.getAttribute('data-exp') >= user_exp_needed[userobj.lvl] || order==true){
+      //alert('Check LVL up ');
+         
+
+    
+    if (lvl != 1){
+    userobj.lvl = (1 * lvl) ;
+    userobj.damge_index += (1 * lvl) - 1;
+    userobj.health_index += (1 * lvl) -1;
+    } else if (lvl = 'auto') {
+      let is_health = document.querySelector("#item13").getAttribute('data-health');
+      let is_mana = document.querySelector("#item13").getAttribute('data-mana');
+      let is_damge = document.querySelector("#item13").getAttribute('data-damge');
+      let is_exp = document.querySelector("#item13").getAttribute('data-exp');
+      let item_type = '';
+      
+      if (is_health != null){
+        item_type = 'health';
+        return;
+      } else if (is_mana != null) {
+          alert('mana');
+          item_type = 'mana';
+          return;
+      } else if (is_damge != null){
+          alert('damge');
+          item_type = 'damge';
+          return;
+      /* handle auto lvl for more than 1 */
+      } else {
+        item_type = 'exp';
+      }
+
+
+            let check_cexp =  Number(champ.getAttribute('data-exp'));
+            
+            if (check_cexp == null){
+              champ.setAttribute('data-exp', 0);
+            }
+
+      for (var lvl=0; lvl<user_exp_needed.length; lvl++)
+       {
+         if (check_cexp < user_exp_needed[lvl]) {
+         
+           if (check_cexp==0) {
+             // case lvl 0 and found exp items using item drop
+             alert('its lvl 1');
+             userobj.lvl = user_levels_list[lvl + 1];
+             userobj.health_index = lvl + 1;
+             userobj.damge_index = lvl + 1;
+             
+             break;
+           }
+           
+           if (userobj.lvl == user_levels_list[lvl - 1]){
+             userobj.lvl = user_levels_list[lvl];
+           } else {
+             userobj.lvl = user_levels_list[lvl - 1];
+           }
+           
+           userobj.health_index = lvl - 1;
+           userobj.damge_index = lvl - 1;
+           // here the important part in lvl up
+           alert(user_levels_list[lvl - 1]);
+           
+           break;
+         } 
+      }
+    } else {
+    userobj.lvl += 1;
+    userobj.damge_index += 1;
+    userobj.health_index += 1;    
+    }
+    userobj.damge = user_damge[userobj.damge_index];
+    userobj.health = user_health[userobj.health_index];
+    text_level.textContent = userobj.lvl;
+    champ.setAttribute('data-exp', user_exp_needed[userobj.lvl-1]);
+    
+    champ.setAttribute('data-level', userobj.lvl);
+    champ.setAttribute('data-damge', userobj.damge);
+    champ.setAttribute('data-health', userobj.health);
+    
+    /* check if user lvled up or not */
+    if (champexp < userobj.lvl) {
+          let old_image = champ.src;
+    champ.src = "https://raw.githubusercontent.com/MahmoudHegazi/monsters-hunter/main/jumb.webp";
+    setTimeout(function(){ champ.src = cham_def_image;}, 1300);
+     // LVL UP
+    //alert('level up');
+    return true;
+    } else {
+
+    // LVL NOT up 
+    return false;
+    }
+     
+       }
+   
+  },
+  attack_calc: (event)=> {
+    //alert(event.target.getAttribute('data-health'));
+  },
+  live_or_die: (monster) => {
+  
+    let current_health = Number(monster.getAttribute('data-health'));
+    let champ_attack = Number(champ.getAttribute('data-damge'));
+    let champ_exp = Number(champ.getAttribute('data-exp'));
+    let champ_lvl = Number(champ.getAttribute('data-level'));
+    let result = current_health - champ_attack;
+    /* if champ still alive */
+    if (result > 0) {
+       // if champ live
+       monster.setAttribute('data-health', Number(monster.getAttribute('data-health')) - champ_attack )
+       return monster.getAttribute('data-health');
+    } else {
+    
+      // if champ dead
+      let monster_exp = Number(monster.getAttribute('data-exp'));
+      let champ_exp = Number(champ.getAttribute('data-exp'));
+      monster.setAttribute('data-health', 0);
+      champ.setAttribute('data-exp',monster_exp + champ_exp);
+      
+      if (champ_exp >= user_exp_needed[userobj.lvl]) {
+         //champ.setAttribute('data-level', champ_lvl+1); 
+         
+         /* here must be function upgrade according to exp*/
+         userobj.lvlup(true, 'auto');
+         //alert('hi');
+         return 'dead';
+         
+      }
+      return 'dead';
+    }
+
+  }
+}
+
+
+
+/* ############# Game Object #################################*/
+
+const game = {
+   room_empty: false,
+   total_items: 0,
+   items_room: document.querySelector('#room13_champ'),
+   roomIsEmpty: ()=> {
+     /*check if room empty*/
+     
+    let check0 = champ.getAttribute('data-current-room');
+    if (check0 == 'room13_champ'){
+        game.room_empty = false;
+        return false;
+    }
+     let check1 = document.querySelector("#item13");
+        
+
+     if (check1 == null){
+        game.room_empty = true;
+        return true;
+     } else {
+        game.room_empty = false;
+        return false;
+     }
+   },
+   items: ['lvl', 'health', 'mana', 'damge'],
+   create_item: (type='lvl', value)=> {
+   
+       switch (type){
+       /* Game Items */
+       case 'lvl':
+           new_item = document.createElement("img");
+           new_item.style.width = "80%";
+           new_item.style.height = "80%";
+           new_item.style.marginLeft = "10%";
+           new_item.setAttribute('data-room', 'item13');
+           new_item.setAttribute('data-exp', value);       
+           new_item.id =  "item13";
+           game.total_items += 1;
+           document.getElementById("room13_champ").appendChild(new_item);
+           alert('You Found EXP Power potion');
+           return true;
+           break;
+       case 'health':
+           new_item = document.createElement("img");
+           new_item.style.width = "80%";
+           new_item.style.height = "80%";
+           new_item.style.marginLeft = "10%";
+           new_item.setAttribute('data-room', 'item13');
+           new_item.setAttribute('data-exp', Number(champ.getAttribute('data-level')));
+           new_item.setAttribute('data-health', value);
+           new_item.id =  "item13";
+           game.total_items += 1;
+           document.getElementById("room13_champ").appendChild(new_item);
+           alert('You Found Health potion');
+           return true;
+       break;
+       case 'mana':
+           new_item = document.createElement("img");
+           new_item.style.width = "80%";
+           new_item.style.height = "80%";
+           new_item.style.marginLeft = "10%";
+           new_item.setAttribute('data-room', 'item13');
+           new_item.setAttribute('data-exp', Number(champ.getAttribute('data-level')));
+           new_item.setAttribute('data-mana', value);
+           new_item.id =  "item13";
+           game.total_items += 1;
+           document.getElementById("room13_champ").appendChild(new_item);
+           alert('You Found mana potion');
+           return true;
+       break;
+       case 'damge':
+           new_item = document.createElement("img");
+           new_item.style.width = "80%";
+           new_item.style.height = "80%";
+           new_item.style.marginLeft = "10%";
+           new_item.setAttribute('data-room', 'item13');
+           new_item.setAttribute('data-exp', champ.getAttribute('data-level'));
+           new_item.setAttribute('data-damge', value);
+           new_item.id =  "item13";
+           game.total_items += 1;
+           document.getElementById("room13_champ").appendChild(new_item);
+           alert('You Found Dragon Ball IT will Give you Super Power');
+           return true;
+       break;
+       default:
+           alert('You Found EXP Power potion');
+           new_item = document.createElement("img");
+           new_item.style.width = "80%";
+           new_item.style.height = "80%";
+           new_item.style.marginLeft = "10%";
+           new_item.setAttribute('data-room', 'item13');
+           new_item.setAttribute('data-exp', value);       
+           new_item.id =  "item13";
+           game.total_items += 1;
+           document.getElementById("room13_champ").appendChild(new_item);
+           alert('You Found mana potion');
+           return true;
+           break;
+       }
+
+   },
+   new_reward: (type,value)=> {
+      let room_empty = game.roomIsEmpty();
+      if (room_empty) {
+         game.create_item('lvl', 1);
+         return true;
+      } else {
+        //alert(room_empty);
+        return false;
+      }
+
+   }
+}
+
+
+  
+  
+  
+/*  update room part */
+ window.addEventListener('DOMContentLoaded', (event) => {
+//game.roomIsEmpty();
+
+
+game.new_reward('lvl', 1);
+
+/*  timer GIFT function control gift time each 30 second drop new gift*/
+
+
+
+/* end of time */
+
+
+});
+/* #################### game #################################*/
+const heart = "https://i.pinimg.com/originals/98/d8/90/98d89049c0d6fcd6ff980635d53f383a.gif";
+
+
+const items = [
+'https://cliply.co/wp-content/uploads/2020/02/392002130_GEM_STONE_EMOJI_400px.gif', "https://i.gifer.com/origin/4c/4cf9c4b3173ec5a3ba877daed7c3309f_w200.gif",
+"https://thumbs.gfycat.com/ObeseBothBaboon-size_restricted.gif",
+"https://i.pinimg.com/originals/7b/51/f8/7b51f89ea40fbc46ed5eca47cad5efaa.gif"
+]
+const monster_images = [ "https://i.pinimg.com/originals/51/10/ab/5110ab924ec1d83549b2b99a49ac5e66.gif",
+"https://thumbs.gfycat.com/OffensiveAnimatedLeafhopper-size_restricted.gif", "https://i.imgur.com/YxoIETK.gif","https://classroomclipart.com/images/gallery/Animations/big-eyed-purple-monster-animated-clipart-crcasm3.gif", "https://i.pinimg.com/originals/79/4a/d8/794ad85ec52e710511ac1581a401476a.gif","https://media1.giphy.com/media/jRr2Y37pHcYlRU8EZg/giphy.gif","https://lh3.googleusercontent.com/proxy/NARVwGsceMOPOSXaa6wz6Twt01Ubgi-Za-iCkarnriZLnEd9C7LMZNKJ_rGdlDT6sSl9IlOguq-YZEQg5KA0d_oycH0Dfg","https://static.wikia.nocookie.net/monster-legends-competitive/images/f/f5/Keeper_animation.gif/revision/latest?cb=20210321175116&path-prefix=fr","https://64.media.tumblr.com/f489f2492bd2641f8b8540ef57fb3f2d/tumblr_nq7ymstGxa1tgzy56o1_r2_540.gifv","https://static.wikia.nocookie.net/oto/images/1/10/Monster_Spicy_Dragon_Move.gif/revision/latest/scale-to-width-down/340?cb=20170424010510", "https://i.gifer.com/XqyS.gif","https://i.gifer.com/5e9d.gif"];
+
+var levels_array = [7,4,12,3,2,5,8,10,1,6,11,9];
+
+
+let check_monsters_levels = () => {
+  level_list = [];
+  document.querySelectorAll('.room_label').forEach( (lvl)=>{ level_list.push(lvl.textContent); });
+  return level_list;
+}
+
+
+/* function to update champ data room */
+function checkroom() {
+  return champ.getAttribute('current-room');
+  
+}
+
+
+
+  // function to create monster
+  const single_monster = (room_number, parent, img, count, width, index) => {
+    for (let i=0; i < count; i++){
+    let new_monster = document.createElement('img');
+    let current_room_num = room_number.split('_')[0].split('m')[1];
+    let current_index = index;
+    new_monster.src = img;
+    new_monster.style.width = width;
+    new_monster.className = "monster";
+    new_monster.setAttribute('data-lvl', current_index);
+    new_monster.setAttribute('data-health', monsters_health[index]);
+    new_monster.setAttribute('data-damge', monsters_damge[index]);
+    new_monster.setAttribute('data-exp', monsters_exp[index]);
+    new_monster.setAttribute('data-room', room_number);
+    new_monster.addEventListener('click', attack);
+    parent.appendChild(new_monster);
+    }
+  }
+  
+  
+const createmonsters = ()=> {
+  
+  var one_index = 0;
+  var two_index = 0;
+  var three_index = 0;
+  let unique_index = [];
+  var index = 1;
+
+  
+  rooms.forEach( (room, l)=> {
+    
+
+    const index = Math.floor(Math.random() * 11) + 1;
+
+    let monster_count = Math.floor(Math.random() * 3) + 1;
+    monster_image = monster_images[index];
+    labels[l].textContent = index;
+    
+
+    
+    /* indexing levels  not finished
+    if (monster_count == 1) {
+           
+    }
+    else if (monster_count == 2) {
+       
+    }
+    else{
+       unused line can break the code
+    }
+    */
+    
+
+    let room_number = room.getAttribute('data-room');
+    
+    
+    /* create monster accodring to result */
+    if (monster_count == 1) {
+    single_monster(room_number, room, monster_image, monster_count, '50%', index);
+    } 
+    else if (monster_count == 2) {
+    single_monster(room_number, room, monster_image, monster_count, '25%', index);
+    } else {
+    single_monster(room_number, room, monster_image, monster_count, '20%', index);
+    }
+ 
+    
+  });
+  
+}
+createmonsters();
+let monster_levels = check_monsters_levels();
+let minlevel = arrayMin(monster_levels);
+
+let handle_firstlevel = (first)=> {
+
+ if (first > 1) {
+ let img_src = items[Math.floor(Math.random() * 3)+1];
+ let new_image = document.createElement('img');
+ document.getElementById("room13_champ").setAttribute('data-exp', first);
+ new_image.src = img_src;
+ new_image.style.width = "80%";
+ new_image.style.height = "80%";
+ new_image.style.marginLeft = "10%";
+ new_image.setAttribute('data-room', 'item13');
+ new_image.setAttribute('data-exp', first);
+ new_image.id =  "item13";
+ document.getElementById("room13_champ").appendChild(new_image);
+  //champ.setAttribute('data-level', first);
+ //text_level.textContent = first;
+ 
+ }
+}
+
+
+handle_firstlevel(minlevel);
+function dragStart(event) {
+  event.dataTransfer.setData("Text", event.target.id);
+}
+
+function dragging(event) {
+ // "The p element is being dragged";
+}
+
+function allowDrop(event) {
+  event.preventDefault();
+}
+
+function drop(event) {
+  event.preventDefault();
+  var data = event.dataTransfer.getData("Text");
+  var room_id = event.target.getAttribute('data-room');
+  var room_to = document.getElementById(room_id);
+  champ.setAttribute('data-current-room', room_id);
+  
+  
+  
+  if (room_id == 'item13') {
+  
+     // check which item 
+     
+     let is_health = document.getElementById(room_id).getAttribute('data-health');
+     let is_damge = document.getElementById(room_id).getAttribute('data-damge');
+     let is_mana = document.getElementById(room_id).getAttribute('data-mana');
+     
+
+     
+    
+     let item_exp = document.getElementById("item13").getAttribute('data-exp');
+     alert(Number(item_exp));
+     userobj.lvlup(true, Number(item_exp));
+      document.getElementById("item13").style.display = "none";
+     //champ.setAttribute('data-current-room', room_id);
+     text_level.textContent = champ.getAttribute('data-level');
+
+      
+
+     
+     // handle NAN error 
+
+     document.getElementById("room13_champ").appendChild(document.getElementById(data));
+     return true;
+     
+     }
+
+  room_to.appendChild(document.getElementById(data));
+    
+
+  // droped
+}
+
+
+
+
+
+
+
+/* ####################### attack #################################*/
+function attack(event) {
+  let champ_room = champ.getAttribute('data-current-room');
+  let monster_room = event.target.getAttribute('data-room');
+  
+  /* HERE if champion not in the room can not attack this monster*/
+  if (champ_room == monster_room){
+    // alert('You can Attack');
+     // store old src
+     let old_src = champ.src;
+     champ.src = "https://raw.githubusercontent.com/MahmoudHegazi/monsters-hunter/main/attack1.webp"
+     
+     /* show effect*/
+     let get_effect = event.target.getAttribute('data-room') + '_ef';
+     get_effect = document.getElementById(get_effect);
+     
+   
+    
+     
+     check_monster = userobj.live_or_die(event.target);
+     
+     
+     if (check_monster == 'dead') {
+     // ATTack AREA
+     let attack_data =  userobj.attack_calc(event);
+      
+     // kill monster
+     event.target.classList.add('dead_monster');
+     /*https://kylegrant76.files.wordpress.com/2016/01/explosion-1c200.gif*/
+//alert('h');
+
+     setTimeout(function(){ 
+     
+          event.target.remove(); get_effect.style.display = "none"; 
+           setTimeout(function(){ champ.style.marginLeft = "20px"; }, 210);
+           
+                
+     setTimeout(function(){ champ.style.marginLeft = "-20px"; 
+     champ.src = old_src;
+     
+     }, 600);
+     
+          // then level up
+     
+     setTimeout(function(){ userobj.lvlup(true,1);}, 1200);
+     
+     }, 100);
+     
+    
+
+     
+
+     
+     } else {
+     
+       /*################ IF Monster Not Dead calcution ###############*/
+
+       //alert("monster still live now health" + check_monster);
+       setTimeout(function(){ champ.style.marginLeft = "20px"; }, 200);
+       
+       setTimeout(function(){ champ.src = cham_def_image; champ.style.marginLeft = "-20px";}, 500);
+     }
+          setTimeout(function(){ get_effect.style.display = "block";}, 200);
+           setTimeout(function(){ get_effect.style.display = "none";}, 300);
+     
+     //champ.src = old_src;
+     
+     
+     //setTimeout(function(){ champ.src = cham_def_image;}, 1300);
+     
+     //event.target.remove();
+  } else {
+    alert('You have no abilty to use magic attack enter the room');
+  }
+  
+
+}
+</script>
+
+</body>
+</html>
