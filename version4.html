@@ -328,7 +328,7 @@
 
     </div>
     
-      
+      </div>
 
 
 <script>
@@ -384,6 +384,7 @@ const userobj = {
   health_index: 0,
   damge: user_damge[0],
   health: user_health[0],
+  items: 0,
   lvl: 1,
   lvlup: (order, lvl) => {
   
@@ -662,7 +663,7 @@ const game = {
 
 
 game.new_reward('lvl', 1);
-
+userobj.items += 1;
 /*  timer GIFT function control gift time each 30 second drop new gift*/
 
 
@@ -832,7 +833,7 @@ function drop(event) {
      let item_exp = document.getElementById("item13").getAttribute('data-exp');
      alert(Number(item_exp));
      userobj.lvlup(true, Number(item_exp));
-      document.getElementById("item13").style.display = "none";
+      document.getElementById("item13").remove();
      //champ.setAttribute('data-current-room', room_id);
      text_level.textContent = champ.getAttribute('data-level');
 
@@ -903,6 +904,10 @@ function attack(event) {
           // then level up
      
      setTimeout(function(){ userobj.lvlup(true,1);}, 1200);
+     
+     setTimeout(function(){ game.new_reward('lvl', 1);userobj.items += 1; }, 1300);
+     
+
      
      }, 100);
      
