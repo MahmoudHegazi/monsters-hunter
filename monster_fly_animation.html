@@ -12,40 +12,55 @@
 $(document).ready(function(){
   $("button").click(function(){
     
-    $("img").animate({left: '350px'});
-    $("img").animate({top: '300px'});
+    $(".flyer").animate({left: '350px'});
+    $(".flyer1").animate({left: '350px'});
+    $(".flyer").animate({top: '300px'});
+    $(".flyer1").animate({top: '300px'});
 
   
-    $("img").animate({left: '700px'});
-    $("img").animate({top: '50px'});
+    $(".flyer").animate({left: '700px'});
+    $(".flyer1").animate({left: '0'});
+    $(".flyer").animate({top: '50px'});
     
     //for (var i=0; i<1; i++){
     
 
        
-       $("img").addClass("right");
-       $("img").animate({left: '700px'});
-       $("img").animate({top: '50px'});
-       setTimeout(()=>{$("img").removeClass("right");}, 1000);
+       $(".flyer").addClass("right");
+       $(".flyer1").animate({top: '0'});
+       $(".flyer").animate({left: '700px'});
+       $(".flyer1").animate({left: '350px'});
+       $(".flyer").animate({top: '50px'});
+       $(".flyer1").animate({top: '300px'});
+       setTimeout(()=>{$(".flyer").removeClass("right");}, 1000);
+       setTimeout(()=>{$(".flyer1").addClass("right");}, 1000);
        
-       $("img").animate({left: '350px'});
-       $("img").animate({top: '300px'});
-       $("img").animate({left: '0'});
-       $("img").animate({top: '50px'});
-       $("img").animate({left: '350px'});
-       $("img").animate({top: '300px'});
-       setTimeout(()=>{$("img").addClass("right");}, 4000);
-       $("img").animate({top: '500px'});
-       setTimeout(()=>{$("img").removeClass("right");}, 4700);
-       $("img").animate({left: '0'});
-       setTimeout(()=>{$("img").addClass("right");}, 5500);
-       $("img").animate({top: '300px'});
-       $("img").animate({left: '350px'});
-       $("img").animate({left: '700px'});
-       setTimeout(()=>{$("img").removeClass("right");}, 7000);
-       $("img").animate({top: '590px'});
-       $("img").animate({left: '350px'});
-       $("img").animate({top: '300px'});
+       $(".flyer").animate({left: '350px'});
+       $(".flyer1").animate({top: '0'});
+       $(".flyer").animate({top: '300px'});
+       $(".flyer1").animate({left: '700px'});
+       $(".flyer").animate({left: '0'});
+       $(".flyer1").animate({top: '300px'});
+       $(".flyer").animate({top: '50px'});
+       $(".flyer1").animate({top: '590px'});
+       $(".flyer").animate({left: '350px'});
+       $(".flyer1").animate({left: '350px'});
+       $(".flyer").animate({top: '300px'});
+       $(".flyer1").animate({top: '300px'});
+       setTimeout(()=>{$(".flyer").addClass("right");}, 4000);
+       setTimeout(()=>{$(".flyer1").removeClass("right");}, 4000);
+       $(".flyer").animate({top: '500px'});
+
+       setTimeout(()=>{$(".flyer").removeClass("right");}, 4700);
+       $(".flyer").animate({left: '0'});
+       setTimeout(()=>{$(".flyer").addClass("right");}, 5500);
+       $(".flyer").animate({top: '300px'});
+       $(".flyer").animate({left: '350px'});
+       $("flyer").animate({left: '700px'});
+       set.flyer(()=>{$(".flyer").removeClass("right");}, 7000);
+       $(".flyer").animate({top: '590px'});
+       $(".flyer").animate({left: '350px'});
+       $(".flyer").animate({top: '300px'});
 
        
     //}
@@ -59,7 +74,9 @@ $(document).ready(function(){
 <button>Start Animation</button>
 
 
-<img src="https://i.pinimg.com/originals/71/2e/46/712e46ad80ca51871573a58b91f3f76c.gif" style="height:100px;width:100px;position:absolute;">
+<img class="flyer" src="https://i.pinimg.com/originals/71/2e/46/712e46ad80ca51871573a58b91f3f76c.gif" style="height:100px;width:100px;position:absolute;">
+
+<img class="flyer1" src="https://i.pinimg.com/originals/71/2e/46/712e46ad80ca51871573a58b91f3f76c.gif" style="height:100px;width:100px;position:absolute;">
 
 </body>
 </html>
